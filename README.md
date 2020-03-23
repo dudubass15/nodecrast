@@ -1,6 +1,8 @@
 # nodecrast
 API para criação de uma central de transmissão igual ao chromecast. Para utilizar a API, precisa ser feito uma request para o endpoint
-OPEN, passando "url" e "tipo" (youtube ou primevideo).
+OPEN, passando "url" e "tipo" (youtube ou primevideo). <br>
+
+Rode o projeto com o comando: DEBUG=nodecrast:* npm start
 
 #REQUISITOS <br>
 
