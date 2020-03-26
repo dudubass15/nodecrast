@@ -12,7 +12,9 @@ module.exports = {
             
             if(data.tipo == "youtube") {
 
-                let command = 'google-chrome -start-fullscreen ' + data.url + '?autoplay=1';
+                // let command = 'google-chrome -start-fullscreen ' + data.url + '?autoplay=1';
+
+                let command = 'chromium -start-fullscreen ' + data.url + '?autoplay=1';
                 
                 console.log(command);
                 
@@ -24,8 +26,9 @@ module.exports = {
 
             if(data.tipo == "primevideo") {
 
-                // let command = 'google-chrome ' + data.url + '?autoplay=1&amp&t=0';
-                let command = 'google-chrome -start-fullscreen ' + data.url + '?autoplay=1&amp&t=0';
+                // let command = 'google-chrome -start-fullscreen ' + data.url + '?autoplay=1&amp&t=0';
+
+                let command = 'chromium -start-fullscreen ' + data.url + '?autoplay=1&amp&t=0';
                 
                 shell.exec('gnome-terminal -- ' + command);
 
