@@ -12,15 +12,21 @@ module.exports = {
             
             if(data.tipo == "youtube") {
 
-                // let command = 'google-chrome -start-fullscreen ' + data.url + '?autoplay=1';
+                let url = this.getUrl(data.url);
 
-                let command = 'chromium -start-fullscreen ' + data.url + '?autoplay=1';
-                
-                console.log(command);
-                
-                shell.exec('gnome-terminal -- ' + command);
+                if(url != "erro") {
 
-                return res.json({mensagem: 'ok'});
+                    // let command = 'google-chrome -start-fullscreen ' + 'https://www.youtube.com/embed/' + url + '?autoplay=1';
+
+                    let command = 'chromium -start-fullscreen ' + 'https://www.youtube.com/embed/' + url + '?autoplay=1';
+
+                    shell.exec('gnome-terminal -- ' + command);
+
+                    return res.json({mensagem: 'ok'});
+
+                }else {
+                    return res.json({mensagem: 'erro ao processar vídeo'});
+                }
 
             }
 
@@ -41,9 +47,23 @@ module.exports = {
     stop(req, res) {
 
         shell.exec("gnome-terminal -- killall chrome");
-        console.log("deu certo");
 
         return res.json({mensagem: 'ok'});
+    },
+
+    getUrl(url) {
+        let result;
+
+        let data = url.split("v=");
+
+        if(data) {
+            let codigoVideo = data[1];
+            result = codigoVideo;
+            return result;
+        }else {
+            result = "erro";
+            return result;
+        }
     }
 
 }
